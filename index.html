@@ -1,38 +1,388 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>AAR DEMO | AWS CLOUD DEPLOYMENT</title>
-  <style>
-    body {
-      color: #000080;
-      background-color: #FFFFFF;
-      font-family: Arial, sans-serif;
-      font-size: 14px;
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CC_CP_FINAL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url("https://d1.awsstatic.com/Digital%20Marketing/House/Hero/Artboard-1.8c67493045608335b97122632cdd019707e9f757.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+.container{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    height: 560px;
+    background: #f5f5f5;
+    box-shadow: 0 30px 50px #dbdbdb;
+}
+
+.container .slide .item{
+    width: 200px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-radius: 20px;
+    box-shadow: 0 30px 50px #505050;
+    background-position: 50% 50%;
+    background-size: cover;
+    display: inline-block;
+    transition: 0.5s;
+}
+
+.slide .item:nth-child(1),
+.slide .item:nth-child(2){
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.slide .item:nth-child(3){
+    left: 50%;
+}
+.slide .item:nth-child(4){
+    left: calc(50% + 220px);
+}
+.slide .item:nth-child(5){
+    left: calc(50% + 440px);
+}
+
+/* here n = 0, 1, 2, 3,... */
+.slide .item:nth-child(n + 6){
+    left: calc(50% + 660px);
+    opacity: 0;
+}
+
+
+
+.item .content{
+    position: absolute;
+    top: 50%;
+    left: 25px;
+    width: 300px;
+    text-align: left;
+    color: #eee;
+    transform: translate(0, -50%);
+    font-family: system-ui;
+    display: none;
+}
+
+
+.slide .item:nth-child(2) .content{
+    display: block;
+}
+
+
+.content .name{
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0;
+    animation: animate 1s ease-in-out 1 forwards;
+
+}
+
+.content .des{
+    margin-top: 270px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.3s 1 forwards;
+    font-weight: bolder;
+    text-align: justify;
+    color: whitesmoke;
+ 
+}
+
+.content button{
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.6s 1 forwards;
+}
+
+
+@keyframes animate {
+    from{
+        opacity: 0;
+        transform: translate(0, 100px);
+        filter: blur(33px);
     }
-    
-    h1 {
-      font-size: 500%;
-      font-weight: normal;
-      margin-bottom: 0;
+
+    to{
+        opacity: 1;
+        transform: translate(0);
+        filter: blur(0);
     }
-    
-    h2 {
-      font-size: 200%;
-      font-weight: normal;
-      margin-bottom: 0;
-    }
-  </style>
+}
+
+
+
+.button{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+}
+
+.button button{
+    width: 40px;
+    height: 35px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+    border: 1px solid #000;
+    transition: 0.3s;
+}
+
+.button button:hover{
+    background: #ababab;
+    color: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+button,
+.btn {
+  font-family: inherit;
+}
+
+/* CSS RESET ENDS */
+
+/* NAVIGATION BAR */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  padding: 0.75rem 5vw;
+  box-shadow: 0 0 30px black;
+  background-color: whitesmoke;
+  height: 85px;
+}
+
+nav span {
+  color: #4caf50;
+}
+
+nav p {
+  font-size: 25px;
+  font-weight: 600;
+  cursor: default;
+}
+
+nav li {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+nav a {
+  text-decoration: none;
+  color: #676767;
+  padding: 0 1rem;
+  transition: 0.1s ease-in-out;
+  font-size: 20px;
+}
+nav a:hover {
+  color: #121212;
+}
+
+nav .btn {
+  padding: 0.5rem 1rem;
+  margin: 0 0 0 0.5rem;
+  border: 1px solid #4caf50;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  font-size: 17px;
+}
+
+.register {
+  background-color: #4caf50;
+  color: white;
+  border: 1px solid #4caf50;
+  border-radius: 5px;
+}
+
+.register:hover {
+  background-color: #3c8c40;
+}
+
+.login {
+  background-color: white;
+  color: #4caf50;
+}
+
+.login:hover {
+  background-color: #4caf50;
+  color: white;
+  border: 1px solid #4caf50;
+  border-radius: 5px;
+}
+
+/* NAVIGATION BAR ENDS */
+
+
+/* MEDIA QUERIES - RESPONSIVE LAYOUT */
+
+/* DESKTOP - LAPTOP - TABLET */
+@media screen and (min-width: 850px){
+  nav .small-screens {
+    display: none;
+  }
+}
+
+/* MOBILE */
+@media screen and (max-width: 850px){
+  nav{
+    padding: 1rem 5vw;
+  }
+  
+  nav .small-screens i{
+    font-size: 25px;
+    cursor: pointer;
+  }
+  
+  nav .big-screens {
+    display: none;
+  }
+}
+    </style>
 </head>
+
 <body>
-  <div align="center">
-    <img src="https://s3.ap-south-1.amazonaws.com/www.basava.com/aar_logo_final.png" style="max-width: 20%;">
-    <h1>Congratulations!!! </h1>
-      <h2>Welcome to CICD PIPELINE| TY-75 | CS-D</h2>
-      <h3>This application was deployed</h3>
-      <p>PPT link: <a href="https://www.canva.com/design/DAF_Yln9hCM/kCOt8UuWnYg8MzJUGZ8jsA/edit?utm_content=DAF_Yln9hCM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank"> PreLink </a></p>
-      <p> Hello We are in the meeting Ashok</p>
+    <nav class="flex align-center">
+        <p><span>Automated pipeline </span>integration using AWS</p>
+        <ul>
+          <li class="big-screens">
+            <button class="btn register" onclick="window.location.href='https://www.canva.com/design/DAF_Yln9hCM/kCOt8UuWnYg8MzJUGZ8jsA/edit?utm_content=DAF_Yln9hCM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton'">Presentation</button>
+
+            <button class="btn login" onclick="window.location.href='https://ap-south-1.console.aws.amazon.com/console/home?region=ap-south-1'">AWS Console</button>
+        </li>
+          <li class="small-screens">
+            <i class="fa-solid fa-bars"></i>
+          </li>
+        </ul>
+      </nav>
+    
+    <div class="container">
+        <div class="slide">
+            <div class="item" style="background-image: url(https://logowik.com/content/uploads/images/t_aws-lambda2296.jpg);">
+                <div class="content">
+                    <div class="name">Lambda</div>
+                    <div class="des">
+                        AWS Lambda is a serverless compute service that runs your code in response to events, automatically managing the underlying infrastructure and scaling to handle varying levels of traffic, with you only paying for the compute time consumed by your code.
+                    </div>
+                    <button class="seeMore" onclick="window.location.href='https://aws.amazon.com/lambda/'">See More</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(https://media.gettyimages.com/id/1232270762/photo/seattle-wa-an-amazon-web-services-ad-board-is-seen-in-a-pre-season-friendly-match-between-the.jpg?s=612x612&w=0&k=20&c=dt9JU2TgklyPs9jJZqYRsZUibxO3I9jVG0f2NymcRXw=);">
+                <div class="content" style=" color: White;">
+                    <div class="name">AWS</div>
+                    <div class="des">
+                        AWS (Amazon Web Services) is a cloud computing platform that allows individuals and businesses to rent virtual servers, storage, databases, analytics, and other services over the internet, providing a scalable and on-demand infrastructure for building, deploying, and managing applications and workloads.
+                    </div>
+                    <button class="seeMore" onclick="window.location.href='https://aws.amazon.com/'">See More</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(https://logowik.com/content/uploads/images/aws-ec24128.jpg);">
+                <div class="content">
+                    <div class="name" style="color: black;">EC2</div>
+                    <div class="des" style="color: black;">
+                        Amazon Elastic Compute Cloud (EC2) is a web service provided by Amazon Web Services (AWS) that allows users to run virtual servers, known as instances, in the cloud, providing scalable computing capacity without the need for upfront hardware investments.
+                    </div>
+                    <button class="seeMore" style="color: white; background-color: #000;" onclick="window.location.href='https://eu-north-1.console.aws.amazon.com/ec2/home?region=eu-north-1#Instances:instanceState=running'">See More</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(https://logowik.com/content/uploads/images/amazon-s37765.jpg);">
+                <div class="content">
+                    <div class="name" style="color: black;">S3</div>
+                    <div class="des" style="color: black;">
+                        Amazon S3, or Amazon Simple Storage Service, is a cloud-based object storage service provided by Amazon Web Services (AWS) that allows users to store and retrieve large amounts of data, such as images, videos, and documents, in a scalable and durable manner.
+                    </div>
+                    <button class="seeMore" style="color: white; background-color: black;" onclick="window.location.href='https://aws.amazon.com/s3/'">See More</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(https://logowik.com/content/uploads/images/aws-iam2657.jpg);">
+                <div class="content">
+                    <div class="name">IAM</div>
+                    <div class="des">
+                        AWS Identity and Access Management (IAM) is a web service that helps you securely control access to your AWS resources by creating and managing AWS identities, such as users, roles, and policies.
+                    </div>
+                    <button class="seeMore" onclick="window.location.href='https://aws.amazon.com/iam/'">See More</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(https://logowik.com/content/uploads/images/aws-glacier8561.logowik.com.webp);">
+                <div class="content">
+                    <div class="name">Glacier</div>
+                    <div class="des">
+                        Amazon Glacier is a highly durable and secure online backup and archiving service that stores data in archives and vaults, allowing users to store large amounts of data affordably and retrieve it when needed.
+                    </div>
+                    <button class="seeMore">See More</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="button">
+            <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+           
+              
+        </div>
+        
     </div>
+    <footer style="text-align: center; padding: 10px; background-color: #f1f1f1; position: fixed; left: 0; bottom: 0; width: 100%;">
+        ©2024 Designed and Developed By Vedant Sawant ; Dhanashri Sonawane ; Sahil Shirodkar & Tejas Thakur. All rights reserved.
+      </footer>
 </body>
+
 </html>
 
+<script>
+    let next = document.querySelector('.next')
+    let prev = document.querySelector('.prev')
+
+    next.addEventListener('click', function () {
+        let items = document.querySelectorAll('.item')
+        document.querySelector('.slide').appendChild(items[0])
+    })
+
+    prev.addEventListener('click', function () {
+        let items = document.querySelectorAll('.item')
+        document.querySelector('.slide').prepend(items[items.length - 1]) // here the length of items = 6
+    })
+</script>
